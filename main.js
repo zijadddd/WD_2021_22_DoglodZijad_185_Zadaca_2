@@ -39,7 +39,7 @@ const makeAnArray = () => {
     let user_input;
     
     do {
-        user_input = prompt("Unos " + (counter + 1) + ". clana:");
+        user_input = parseInt(prompt("Unos " + (counter + 1) + ". clana:"));
         array.push(user_input);
         counter++;
     
@@ -67,59 +67,61 @@ if (basicArray.length == 0) {
 console.log("---------------------------------------");
 console.log("Zadatak 2");
 
-// Koristi se funkcija iz prvog zadatka za kreiranje niza
-// Da bi se pronašao duplikat koristi se binarno pretrazivanje
+const sekvencijalnoPretrazivanje = (anArray, trenutniIndex, kljuc) => {
+    // Varijabla trenutniIndex sluzi kao pomocna varijabla da se element ne bi poredio sam sa sobom
+    let i = 0; 
 
-let array = makeAnArray();
-array.sort();
-console.log(array);
-
-const binarnoPretrazivanje = (anArray, kljuc) => {
-    let vrh = anArray.length - 1;
-    let dno = 0;
-    while (vrh >= dno) {
-        let srednji = parseInt((dno+vrh)/2);
-
-        if (kljuc === anArray[srednji]) {
-            return srednji;
-            // Vraca se indeks duplikata u nizu
-        } else if (anArray[srednji] < kljuc) {
-            dno = srednji + 1;
+    while (i < anArray.length) {
+        if (trenutniIndex != i) {
+            if (anArray[i] == kljuc) {
+                return i;
+            } else {
+                i++;
+            }
         } else {
-            vrh = srednji - 1;
+            i++;
         }
     }
+
     return -1;
     // Ukoliko algoritam pretrazivanja nije nista pronasao vraca -1 kako bi znao da nema duplikata
 }
 
-let pronasaoDuplikat = false;
+const pronadjiDuplikat = (anArray) => {
+    let pronasaoDuplikat = false;
 
-for (let i = 0; i < array.length; i++) {
-
-    var cloneArray = [...array];
-    cloneArray.splice(i, 1);
-    // Klonira se niz bez elementa koji se poredi, kako se element ne bi poredio sam sa sobom
-
-    let index = binarnoPretrazivanje(cloneArray, array[i]);
-
-    if (index != -1) {
-        console.log("Duplikat pronađen na poziciji " + (index + 1)); 
-        // Razlog zasto index + 1 je taj sto je niz sortiran i odmah iza njega se nalazi duplikat
-        // Ako postoji
-        array.splice(index, 1);
-        pronasaoDuplikat = true;
+    for (let i = 0; i < anArray.length; i++) {
+        let index = sekvencijalnoPretrazivanje(anArray, i, anArray[i]);
+    
+        if (index != -1) {
+            console.log("Duplikat pronađen na poziciji " + index);
+            anArray.splice(index, 1); 
+            console.log("Novi niz: " + anArray);
+            pronasaoDuplikat = true;
+        }
+    
+        if (pronasaoDuplikat == false && i == (anArray.length - 1)) {
+            console.log("Duplikata nije bilo.");
+        }
     }
 
-    if (pronasaoDuplikat == false && i == (array.length - 1)) {
-        console.log("Duplikata nije bilo.");
+    if (!pronasaoDuplikat) {
+        console.log("Niz bez duplikata: " + anArray);
     }
 }
 
-if (pronasaoDuplikat) {
-    console.log("Niz bez duplikata: " + array);
-}
+let arrayWithString = [5, 6, 7, '5', 10, 11, '7'];
+let arrayWithoutString = [1, 2, 3, 6, 2, 9, 3];
+let arrayWithoutDuplicates = [1, 4, 7, 9, 10, 11];
+
+console.log(arrayWithString);
+pronadjiDuplikat(arrayWithString);
+
+console.log(arrayWithoutString);
+pronadjiDuplikat(arrayWithoutString);
+
+console.log(arrayWithoutDuplicates);
+pronadjiDuplikat(arrayWithoutDuplicates);
 
 console.log("---------------------------------------");
 console.log("Zadatak 3");
-
