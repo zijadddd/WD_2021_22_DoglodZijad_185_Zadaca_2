@@ -85,17 +85,17 @@ const sekvencijalnoPretrazivanje = (anArray, trenutniIndex, kljuc) => {
         }
     }
 
-    return -1;
+    return false;
     // Ukoliko algoritam pretrazivanja nije nista pronasao vraca -1 kako bi znao da nema duplikata
 }
 
-const pronadjiDuplikat = (anArray) => {
+const izbrisiDuplikate = (anArray) => {
     let pronasaoDuplikat = false;
 
     for (let i = 0; i < anArray.length; i++) {
         let index = sekvencijalnoPretrazivanje(anArray, i, anArray[i]);
     
-        if (index != -1) {
+        if (index != false) {
             console.log("Duplikat pronađen na poziciji " + index);
             anArray.splice(index, 1); 
             console.log("Novi niz: " + anArray);
@@ -117,14 +117,84 @@ let arrayWithoutString = [1, 2, 3, 6, 2, 9, 3];
 let arrayWithoutDuplicates = [1, 4, 7, 9, 10, 11];
 
 console.log(arrayWithString);
-pronadjiDuplikat(arrayWithString);
+izbrisiDuplikate(arrayWithString);
 
 console.log(arrayWithoutString);
-pronadjiDuplikat(arrayWithoutString);
+izbrisiDuplikate(arrayWithoutString);
 
 console.log(arrayWithoutDuplicates);
-pronadjiDuplikat(arrayWithoutDuplicates);
+izbrisiDuplikate(arrayWithoutDuplicates);
 
 console.log("---------------------------------------");
 console.log("Zadatak 3");
+
+const mergeTwoArrays = (firstArray, secondArray) => {
+    let pronasaoDuplikat = false;
+    let mergedArray = [...firstArray, ...secondArray];
+    console.log("Spojeni niz: " + mergedArray);
+
+    for (let i = 0; i < mergedArray.length; i++) {
+        let index = sekvencijalnoPretrazivanje(mergedArray, i, mergedArray[i]);
+    
+        if (index != false) {
+            console.log("Duplikat pronađen na poziciji " + index + " te je izbacen iz niza.");
+            mergedArray.splice(index, 1); 
+            console.log(mergedArray);
+            pronasaoDuplikat = true;
+        }
+    
+        if (pronasaoDuplikat == false && i == (mergedArray.length - 1)) {
+            console.log("Duplikata nije bilo.");
+        }
+    }
+
+    return mergedArray;
+}
+
+console.log("Unesite prvi niz: ");
+let firstArray = makeAnArray();
+console.log("Prvi niz: " + firstArray);
+
+console.log("Unesite drugi niz: ");
+let secondArray = makeAnArray();
+console.log("Drugi niz: " + secondArray);
+
+let mergedArray = mergeTwoArrays(firstArray, secondArray);
+console.log("Spojena dva niza bez duplikata su: " + mergedArray);
+
+console.log("---------------------------------------");
+console.log("Zadatak 4");
+
+console.log("Unesite niz: ");
+let numArray = makeAnArray();
+
+const arrayWithoutOddNumbers = numArray.filter(number => {
+    if (number % 2 == 0) {
+        return true;
+    }
+
+    return false;
+});
+
+console.log("Niz bez neparnih brojeva: " + arrayWithoutOddNumbers);
+
+console.log("---------------------------------------");
+console.log("Zadatak 5");
+
+console.log("Unesite niz: ");
+let arrayForSum = makeAnArray();
+
+const sumOfAnArray = (anArray, n) => {
+    if (n == 0) {
+        return anArray[0];
+    } else {
+        return anArray[n] + sumOfAnArray(anArray, n-1);
+    }
+}
+
+const sum = sumOfAnArray(arrayForSum, (arrayForSum.length - 1));
+console.log("Suma niza " + arrayForSum + ": " + sum);
+
+console.log("---------------------------------------");
+console.log("Zadatak 6");
 
