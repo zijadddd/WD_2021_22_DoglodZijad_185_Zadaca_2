@@ -51,18 +51,20 @@ const makeAnArray = () => {
     return array;
 }
 
-let basicArray = makeAnArray();
+const klonirajNiz = () => {
+    let basicArray = makeAnArray();
 
-if (basicArray.length == 0) {
-    console.log("Niz je prazan, nije ga moguce klonirati.");
-} else {
-    let anotherArray = makeAnArray();
-
-    console.log("Kopija niza:");
-    for(let i = 0; i < anotherArray.length; i++) {
-        console.log(anotherArray[i]);
+    if (basicArray.length == 0) {
+        console.log("Niz je prazan, nije ga moguce klonirati.");
+        return "empty";
+    } else {
+        let anotherArray = [...basicArray];
+        return anotherArray;
     }
 }
+
+let kloniraniNiz = klonirajNiz();
+console.log("Klonirani niz: " + kloniraniNiz);
 
 console.log("---------------------------------------");
 console.log("Zadatak 2");
@@ -125,3 +127,4 @@ pronadjiDuplikat(arrayWithoutDuplicates);
 
 console.log("---------------------------------------");
 console.log("Zadatak 3");
+
