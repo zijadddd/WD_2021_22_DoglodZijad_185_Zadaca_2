@@ -168,15 +168,20 @@ console.log("Zadatak 4");
 console.log("Unesite niz: ");
 let numArray = makeAnArray();
 
-const arrayWithoutOddNumbers = numArray.filter(number => {
-    if (number % 2 == 0) {
-        return true;
-    }
+if (numArray.length != 0) {
+    const arrayWithoutOddNumbers = numArray.filter(number => {
+        if (number % 2 == 0) {
+            return true;
+        }
+    
+        return false;
+    });
+    
+    console.log("Niz bez neparnih brojeva: " + arrayWithoutOddNumbers);
+} else {
+    console.log("Niz je prazan");
+}
 
-    return false;
-});
-
-console.log("Niz bez neparnih brojeva: " + arrayWithoutOddNumbers);
 
 console.log("---------------------------------------");
 console.log("Zadatak 5");
@@ -184,17 +189,100 @@ console.log("Zadatak 5");
 console.log("Unesite niz: ");
 let arrayForSum = makeAnArray();
 
-const sumOfAnArray = (anArray, n) => {
-    if (n == 0) {
-        return anArray[0];
-    } else {
-        return anArray[n] + sumOfAnArray(anArray, n-1);
+if (arrayForSum.length != 0) {
+    const sumOfAnArray = (anArray, n) => {
+        if (n == 0) {
+            return anArray[0];
+        } else {
+            return anArray[n] + sumOfAnArray(anArray, n-1);
+        }
     }
+    
+    const sum = sumOfAnArray(arrayForSum, (arrayForSum.length - 1));
+    console.log("Suma niza " + arrayForSum + ": " + sum);
+} else {
+    console.log("Niz je prazan.");
 }
-
-const sum = sumOfAnArray(arrayForSum, (arrayForSum.length - 1));
-console.log("Suma niza " + arrayForSum + ": " + sum);
 
 console.log("---------------------------------------");
 console.log("Zadatak 6");
 
+const balkanCountries = [
+    bih = {
+        name: 'Bosnia and Herzegovina',
+        capital: 'Sarajevo',
+        population: 3824782,
+    },
+    croatia = {
+        name: 'Croatia',
+        capital: 'Zagreb',
+        population: 388529,
+    },
+    serbia = {
+        name: 'Serbia',
+        capital: 'Beograd',
+        population: 6871547
+    },
+    albania = {
+        name: 'Albania',
+        capital: 'Tirana',
+        population: 2845955
+    },
+    bulgaria = {
+        name: 'Bulgaria',
+        capital: 'Sofia',
+        population: 6863422
+    },
+    kosovo = {
+        name: 'Kosovo',
+        capital: 'Pristina',
+        population: 1935259
+    },
+    montenegro = {
+        name: 'Montenegro',
+        capital: 'Podgorica',
+        population: 620739
+    },
+    macedonia = {
+        name: 'North Macedonia',
+        capital: 'Skopje',
+        population: 1863713
+    },
+    greece = {
+        name: 'Hellenic Republic',
+        capital: 'Athens',
+        population: 10678632
+    },
+    slovenia = {
+        name: 'Slovenia',
+        capital: 'Ljubljana',
+        population: 2108708
+    },
+    romania = {
+        name: 'Romania',
+        capital: 'Bucharest',
+        population: 19186201
+    },
+    turkey = {
+        name: 'Turkiye',
+        capital: 'Ankara',
+        population: 84680273
+    },
+]
+
+console.log("---------------------------------------");
+console.log("Zadatak 7");
+
+const countryWithMostPopulation = (countries) => {
+    let temp = 0;
+
+    for (let i = 0; i < countries.length; i++) {
+        if (countries[i].population > countries[temp].population) {
+            temp = i;
+        }
+    }
+
+    return countries[temp];
+} 
+
+console.log("Zemlja sa najvecim brojem stanovnika je: " + countryWithMostPopulation(balkanCountries).name);
