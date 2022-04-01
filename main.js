@@ -212,62 +212,187 @@ const balkanCountries = [
         name: 'Bosnia and Herzegovina',
         capital: 'Sarajevo',
         population: 3824782,
+        cities: [
+            'Banja Luka',
+            'Bijeljina',
+            'Bihać',
+            'Bosanska Krupa',
+            'Cazin',
+            'Čapljina',
+            'Derventa',
+            'Doboj',
+            'Goražde',
+            'Gračanica',
+            'Gradačac',
+            'Gradiška',
+            'Istočno Sarajevo',
+            'Konjic',
+            'Livno',
+            'Lukavac',
+            'Ljubuški',
+            'Mostar',
+            'Orašje',
+            'Prijedor',
+            'Sarajevo',
+            'Srebrenik',
+            'Stolac',
+            'Široki Brijeg',
+            'Trebinje',
+            'Tuzla',
+            'Visoko',
+            'Zavidovići',
+            'Zenica',
+            'Zvornik',
+            'Živinice'
+        ]
     },
     croatia = {
         name: 'Croatia',
         capital: 'Zagreb',
         population: 388529,
+        cities: [
+            'Zagreb',
+            'Split',
+            'Rijeka',
+            'Osijek',
+            'Zadar',
+            'Slavonski brod',
+            'Karlovac',
+            'Pula'
+        ]
     },
     serbia = {
         name: 'Serbia',
         capital: 'Beograd',
-        population: 6871547
+        population: 6871547,
+        cities: [
+            'Beograd',
+            'Čačak',
+            'Jagodina',
+            'Kruševac',
+            'Novi Pazar',
+            'Zaječar'
+        ]
     },
     albania = {
         name: 'Albania',
         capital: 'Tirana',
-        population: 2845955
+        population: 2845955,
+        cities: [
+            'Tirana',
+            'Burrel',
+            'Ballsh',
+            'Berat',
+            'Fier',
+            'Rubik'
+        ]
     },
     bulgaria = {
         name: 'Bulgaria',
         capital: 'Sofia',
-        population: 6863422
+        population: 6863422,
+        cities: [
+            'Sofia',
+            'Plovdiv',
+            'Varna',
+            'Ruse',
+            'Stara Zagora',
+            'Pleven',
+            'Zlatograd'
+        ]
     },
     kosovo = {
         name: 'Kosovo',
-        capital: 'Pristina',
-        population: 1935259
+        capital: 'Priština',
+        population: 1935259,
+        cities: [
+            'Priština',
+            'Klina',
+            'Mališevo',
+            'Peja',
+            'Gjilan',
+            'Vitia'
+        ]
     },
     montenegro = {
         name: 'Montenegro',
         capital: 'Podgorica',
-        population: 620739
+        population: 620739,
+        cities: [
+            'Podgorica',
+            'Nikšić',
+            'Herceg Novi',
+            'Bijelo Polje',
+            'Cetinje',
+            'Kotor',
+            'Tivat'
+        ]
     },
     macedonia = {
         name: 'North Macedonia',
         capital: 'Skopje',
-        population: 1863713
+        population: 1863713,
+        cities: [
+            'Skopje',
+            'Bitola',
+            'Kumanovo',
+            'Prilep',
+            'Tetovo',
+            'Valandovo'
+        ]
     },
     greece = {
         name: 'Hellenic Republic',
         capital: 'Athens',
-        population: 10678632
+        population: 10678632,
+        cities: [
+            'Athens',
+            'Patras',
+            'Volos',
+            'Serres',
+            'Xanthi',
+            'Katerini'
+        ]
     },
     slovenia = {
         name: 'Slovenia',
         capital: 'Ljubljana',
-        population: 2108708
+        population: 2108708,
+        cities: [
+            'Ljubljana',
+            'Maribor',
+            'Kranj',
+            'Celje',
+            'Koper',
+            'Velenje'
+        ]
     },
     romania = {
         name: 'Romania',
         capital: 'Bucharest',
-        population: 19186201
+        population: 19186201,
+        cities: [
+            'Bucharest',
+            'Cluj',
+            'Timis',
+            'Bihor',
+            'Arad'
+        ]
     },
     turkey = {
         name: 'Turkiye',
         capital: 'Ankara',
-        population: 84680273
-    },
+        population: 84680273,
+        cities: [
+            'Ankara',
+            'Istanbul',
+            'Izmir',
+            'Bursa',
+            'Adana',
+            'Konya',
+            'Zonguldak'
+        ]
+    }
 ]
 
 console.log("---------------------------------------");
@@ -281,8 +406,47 @@ const countryWithMostPopulation = (countries) => {
             temp = i;
         }
     }
-
     return countries[temp];
 } 
 
 console.log("Zemlja sa najvecim brojem stanovnika je: " + countryWithMostPopulation(balkanCountries).name);
+
+console.log("---------------------------------------");
+console.log("Zadatak 8");
+
+const returnCountries = (countries) => {
+    let temp = [];
+
+    for (let i = 0; i < countries.length; i++) {
+        if (countries[i].population > 5000000) {
+            temp.push(countries[i]);
+        }
+    }
+    return temp;
+}
+
+const countriesWithALotOfPopulation = returnCountries(balkanCountries);
+console.log("Drzave sa populacijom preko 5000000: ");
+
+for (let i = 0; i < countriesWithALotOfPopulation.length; i++) {
+    console.log(countriesWithALotOfPopulation[i].name);
+}
+
+console.log("---------------------------------------");
+console.log("Zadatak 9");
+
+const returnCityNames = (countries) => {
+    let temp = [];
+
+    for (let i = 0; i < countries.length; i++) {
+        temp.push(countries[i].cities);
+    }
+    return temp;
+}
+
+let cityNames = returnCityNames(balkanCountries);
+console.log("Gradovi: " + cityNames);
+
+console.log("---------------------------------------");
+console.log("Zadatak 10");
+
