@@ -57,7 +57,6 @@ const sekvencijalnoPretrazivanje = (anArray, trenutniIndex, kljuc) => {
     }
 
     return false;
-    // Ukoliko algoritam pretrazivanja nije nista pronasao vraca -1 kako bi znao da nema duplikata
 }
 
 const izbrisiDuplikate = (anArray) => {
