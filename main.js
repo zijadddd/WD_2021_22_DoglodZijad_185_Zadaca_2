@@ -423,7 +423,7 @@ console.log("Gradovi: " + cityNames);
 console.log("---------------------------------------");
 console.log("Zadatak 10: Create a JavaScript function that returns all city names which begin with letter 'Z'. (from task 6).");
 
-// Koristit cu variablu citiNames iz prethodnog zadatka
+// Koristit cu variablu cityNames iz prethodnog zadatka
 
 const cityNamesWithZ = (cities) => {
     let temp = [];
