@@ -1,34 +1,5 @@
-/*
-
-***********************************************
-         ZADACI ZA SAMOSTALNI RAD
-***********************************************
-
-1. Write a JavaScript function to clone an array.
-
-2. Write a JavaScript function to remove duplicate items from an array (5 and '5' are considered duplicates).
-
-3. Write a JavaScript function to merge two arrays and removes all duplicates elements.
-
-4. Write a JavaScript function to remove all odd numbers from array.
-
-5. Write a JavaScript function to get a sum of a given array.
-
-6. Create a JavaScript objects array of Balkan countries with basic properties.
-
-7. Create a JavaScript function that returns country with the most population (from task 6).
-
-8. Create a JavaScript function that returns counties that have population more than 5000000.
-
-9. Create a JavaScript function that returns all city names. (from task 6).
-
-10. Create a JavaScript function that returns all city names which begin with letter 'Z'. (from task 6).
-
-
-*/
-
 console.log("Zadaci za samostalan rad\n---------------------------------------");
-console.log("Zadatak 1");
+console.log("Zadatak 1: Write a JavaScript function to clone an array.");
 
 const makeAnArray = () => {
 
@@ -67,7 +38,7 @@ let kloniraniNiz = klonirajNiz();
 console.log("Klonirani niz: " + kloniraniNiz);
 
 console.log("---------------------------------------");
-console.log("Zadatak 2");
+console.log("Zadatak 2: Write a JavaScript function to remove duplicate items from an array (5 and '5' are considered duplicates).");
 
 const sekvencijalnoPretrazivanje = (anArray, trenutniIndex, kljuc) => {
     // Varijabla trenutniIndex sluzi kao pomocna varijabla da se element ne bi poredio sam sa sobom
@@ -126,7 +97,7 @@ console.log(arrayWithoutDuplicates);
 izbrisiDuplikate(arrayWithoutDuplicates);
 
 console.log("---------------------------------------");
-console.log("Zadatak 3");
+console.log("Zadatak 3: Write a JavaScript function to merge two arrays and removes all duplicates elements.");
 
 const mergeTwoArrays = (firstArray, secondArray) => {
     let pronasaoDuplikat = false;
@@ -163,7 +134,7 @@ let mergedArray = mergeTwoArrays(firstArray, secondArray);
 console.log("Spojena dva niza bez duplikata su: " + mergedArray);
 
 console.log("---------------------------------------");
-console.log("Zadatak 4");
+console.log("Zadatak 4: Write a JavaScript function to remove all odd numbers from array.");
 
 console.log("Unesite niz: ");
 let numArray = makeAnArray();
@@ -184,7 +155,7 @@ if (numArray.length != 0) {
 
 
 console.log("---------------------------------------");
-console.log("Zadatak 5");
+console.log("Zadatak 5: Write a JavaScript function to get a sum of a given array.");
 
 console.log("Unesite niz: ");
 let arrayForSum = makeAnArray();
@@ -205,7 +176,7 @@ if (arrayForSum.length != 0) {
 }
 
 console.log("---------------------------------------");
-console.log("Zadatak 6");
+console.log("Zadatak 6: Create a JavaScript objects array of Balkan countries with basic properties.");
 
 const balkanCountries = [
     bih = {
@@ -395,8 +366,10 @@ const balkanCountries = [
     }
 ]
 
+console.log(balkanCountries);
+
 console.log("---------------------------------------");
-console.log("Zadatak 7");
+console.log("Zadatak 7: Create a JavaScript function that returns country with the most population (from task 6).");
 
 const countryWithMostPopulation = (countries) => {
     let temp = 0;
@@ -412,7 +385,7 @@ const countryWithMostPopulation = (countries) => {
 console.log("Zemlja sa najvecim brojem stanovnika je: " + countryWithMostPopulation(balkanCountries).name);
 
 console.log("---------------------------------------");
-console.log("Zadatak 8");
+console.log("Zadatak 8: Create a JavaScript function that returns counties that have population more than 5000000.");
 
 const returnCountries = (countries) => {
     let temp = [];
@@ -433,7 +406,7 @@ for (let i = 0; i < countriesWithALotOfPopulation.length; i++) {
 }
 
 console.log("---------------------------------------");
-console.log("Zadatak 9");
+console.log("Zadatak 9: Create a JavaScript function that returns all city names. (from task 6).");
 
 const returnCityNames = (countries) => {
     let temp = [];
@@ -448,5 +421,21 @@ let cityNames = returnCityNames(balkanCountries);
 console.log("Gradovi: " + cityNames);
 
 console.log("---------------------------------------");
-console.log("Zadatak 10");
+console.log("Zadatak 10: Create a JavaScript function that returns all city names which begin with letter 'Z'. (from task 6).");
 
+// Koristit cu variablu citiNames iz prethodnog zadatka
+
+const cityNamesWithZ = (cities) => {
+    let temp = [];
+
+    for (let i = 0; i < cities.length; i++) {
+        for (let j = 0; j < cities[i].length; j++) {
+            if (cities[i][j][0] == 'Z') {
+                temp.push(cities[i][j]);
+            }
+        }
+    }
+    return temp;
+}
+
+console.log("Gradovi cija imena pocinju sa slovom Z: " + cityNamesWithZ(cityNames));
