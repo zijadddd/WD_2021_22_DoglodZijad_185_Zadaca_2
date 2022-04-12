@@ -438,3 +438,5 @@ const cityNamesWithZ = (cities) => {
 }
 
 console.log("Gradovi cija imena pocinju sa slovom Z: " + cityNamesWithZ(cityNames));
+
+// Web Design :: Zadaca 2 :: Zijad Doglod
